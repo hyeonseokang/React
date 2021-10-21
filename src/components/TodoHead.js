@@ -29,12 +29,13 @@ const TodoHeadBlock = styled.div`
 
 const TodoHead = ()=>{
     const todos = useTodoState();
+    const undoneTasks = todos.filter(todo => !todo.done);
     console.log(todos);
     return (
         <TodoHeadBlock>
             <h1>{getNow()}</h1>
             <div className="day">{getDay()}</div>
-            <div className="tasks-left">할 일 {todos.length}개 남음</div>
+            <div className="tasks-left">할 일 {undoneTasks.length}개 남음</div>
         </TodoHeadBlock>
     )
 }
