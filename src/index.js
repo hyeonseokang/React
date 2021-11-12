@@ -10,13 +10,17 @@ import { composeWithDevTools } from 'redux-devtools-extension'; // 리덕스 개
 import myLogger from './middlewares/myLogger';
 import logger from 'redux-logger';
 import ReduxThunk from 'redux-thunk';
+import { BrowserRouter } from 'react-router-dom';
+
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(ReduxThunk, logger)));
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <BrowserRouter>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </BrowserRouter>,
   document.getElementById('root')
 );
 

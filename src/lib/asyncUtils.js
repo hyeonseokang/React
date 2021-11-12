@@ -5,6 +5,10 @@ export const createPromiseThunk = (type, promiseCreator) => {
         dispatch({type, param});
         try {
             const payload = await promiseCreator(param);
+            const errorRandom = Math.floor(Math.random() * 2);
+            if (errorRandom == 1)
+                throw new Error("API 오류");
+                
             dispatch({type:SUCCESS, payload});
         } catch(e) {
             dispatch({type:ERROR, payload: e, error: true});
@@ -50,7 +54,7 @@ export const handleAsyncAction = (type, key) => {
             case SUCCESS:
                 return {
                     ...state,
-                    [kwy]: reducerUtils.success(action.payload)
+                    [key]: reducerUtils.success(action.payload)
                 }
             case ERROR:
                 return {
