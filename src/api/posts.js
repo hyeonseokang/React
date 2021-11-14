@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const sleep = n  => new Promise(resolve => setTimeout(resolve, n));
 
 const posts = [
@@ -13,19 +15,18 @@ const posts = [
     },
     {
       id: 3,
-      title: 'redux-saga도 사용해봅시다',
+      title: 'redux-saga도 사22용해봅시다',
       body:
         '나중엔 redux-saga를 사용해서 비동기 작업을 처리하는 방법도 배워볼 거예요.'
     }
 ];
 
 export const getPosts = async () => {
-    await sleep(500);
-    return posts;
+  const response = await axios.get('/posts');
+  return response.data;
 };
 
 export const getPostById = async id => {
-    await sleep(500);
-    return posts.find(post => post.id === id);
+  const response = await axios.get(`/posts/${id}`);
+  return response.data
 };
-
