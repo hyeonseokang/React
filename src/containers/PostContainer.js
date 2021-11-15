@@ -21,6 +21,8 @@ function PostContainer({ postId }) {
 
   return (
       <>
+      <h1>{postId}</h1>
+      <div>{data}</div>
         <button onClick={()=> dispatch(goToHome())}>홈으로 이동</button>
       </>
   );
