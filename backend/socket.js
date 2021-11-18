@@ -8,8 +8,6 @@ module.exports = (server) => {
         console.log('새로운 클라이언트 접속', ip);
         ws.on('message', (message) => {
             console.log('message');
-
-            ws.send("hihi");
         });
 
         ws.on('error', (error) => {
